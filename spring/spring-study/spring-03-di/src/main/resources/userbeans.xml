@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    p命名空间注入 直接注入属性的值-->
+    <bean id="user" class="com.kai.pojo.User" p:age="14" p:name="carry"/>
+
+
+<!--    c命名空间注入，有参构造注入-->
+    <bean id="user2" class="com.kai.pojo.User" c:age="20" c:name="lary" scope="prototype"/>
+</beans>

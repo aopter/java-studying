@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="beans2.xml"/>
+
+    <!--    使用spring来创建我们的对象-->
+<!--    id：Bean的唯一标识符，对象名称-->
+<!--    class：类的全限定名-->
+<!--    name:别名，而且可以同时取多个别名,分隔符可以有很多【, ;】-->
+    <bean id="hello" class="com.kai.pojo.Hello" name="hello2，hell">
+        <property name="str" value="Spring"/>
+    </bean>
+
+
+
+
+
+</beans>

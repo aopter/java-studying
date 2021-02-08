@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kai.dao.UserMapper">
+    <select id="getUsers" resultType="user">
+    select * from mybatistest.user
+    </select>
+    <select id="getUserById" resultType="com.kai.pojo.User" parameterType="int">
+        select * from mybatistest.user where id = #{id}
+    </select>
+    <insert id="addUser" parameterType="com.kai.pojo.User">
+        insert into mybatistest.user (id,name,pwd) value (#{id},#{name},#{pwd})
+    </insert>
+
+    <update id="updateUser" parameterType="com.kai.pojo.User">
+        update mybatistest.user set name=#{name},pwd=#{pwd}  where id =#{id};
+    </update>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from mybatistest.user where id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kai.dao.UserMapper">
+    <select id="getUsers" resultType="com.kai.pojo.User">
+    select * from mybatistest.user
+    </select>
+    <select id="getUserById" resultType="com.kai.pojo.User" parameterType="int">
+        select * from mybatistest.user where id = #{id}
+    </select>
+    <select id="getUserByName" resultType="com.kai.pojo.User" parameterType="map">
+        select * from mybatistest.user where name = #{userName} and id = #{id}
+    </select>
+    <select id="getUsersByLike" resultType="com.kai.pojo.User" parameterType="String">
+        select * from mybatistest.user where name like “%”#{name}“%”
+    </select>
+
+
+
+    <insert id="addUser" parameterType="com.kai.pojo.User">
+        insert into mybatistest.user (id,name,pwd) value (#{id},#{name},#{pwd})
+    </insert>
+
+    <update id="updateUser" parameterType="com.kai.pojo.User">
+        update mybatistest.user set name=#{name},pwd=#{pwd}  where id =#{id};
+    </update>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from mybatistest.user where id = #{id}
+    </delete>
+</mapper>

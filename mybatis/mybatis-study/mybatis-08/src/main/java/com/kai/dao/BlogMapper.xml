@@ -1,0 +1,45 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<!--核心配置文件-->
+<mapper namespace="com.kai.dao.BlogMapper">
+
+
+
+    <insert id="addBlog" parameterType="blog">
+        insert into blog (id,title,author,create_time,views)
+        values (#{id},#{title},#{author},#{create_time},#{views})
+    </insert>
+    
+    
+<!--    <select id="queryBlogs" parameterType="map" resultType="blog">-->
+<!--        select * from blog-->
+<!--        where 1=1-->
+<!--        <if test="title != null">-->
+<!--            and title = #{title}-->
+<!--        </if>-->
+<!--        <if test="author != null">-->
+<!--            and author = #{author}-->
+<!--        </if>-->
+<!--    </select>-->
+
+    <select id="queryBlogs" parameterType="map" resultType="blog">
+        select * from blog
+        <where>
+            <include refid="if-title-author"/>
+        </where>
+    </select>
+
+    <sql id="if-title-author">
+        <if test="title != null">
+            and title = #{title}
+        </if>
+        <if test="author != null">
+            and author = #{author}
+        </if>
+    </sql>
+
+</mapper>
