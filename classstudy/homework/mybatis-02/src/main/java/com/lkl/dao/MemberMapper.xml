@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lkl.dao.MemberMapper">
+    <select id="selectAllMember" resultType="com.lkl.entity.Member">
+        select * from mybatistest.member
+    </select>
+
+    <insert id="addMember" parameterType="com.lkl.entity.Member">
+        insert into mybatistest.member(account,name,phone,date) values(#{account},#{name},#{phone},#{date})
+    </insert>
+
+    <update id="updatePhoneByAccount" parameterType="map">
+        update mybatistest.member set phone = #{phone} where account = #{account}
+    </update>
+
+    <delete id="deleteMember" parameterType="String">
+         delete from mybatistest.member where account = #{account}
+    </delete>
+
+<!--    select * from [data] where  DATEPART('m',[date])=2-->
+    <select id="searchMember" resultType="com.lkl.entity.Member" >
+        select * from mybatistest.member where year(date)='2021' and month(date)='02' and name like '%张%'
+    </select>
+
+
+
+
+</mapper>
